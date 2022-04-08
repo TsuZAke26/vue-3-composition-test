@@ -8,6 +8,7 @@
   </div>
 </template>
 
+<!-- Options API
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -23,6 +24,36 @@ export default defineComponent({
     },
   },
 });
+</script>
+-->
+
+<!-- Composition API (without script setup)
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  setup() {
+    const counter = ref(0);
+    const modifyCounter = (value: number) => {
+      counter.value += value;
+    };
+
+    return {
+      counter,
+      modifyCounter,
+    };
+  },
+});
+</script>
+-->
+
+<script setup lang="ts">
+import { ref } from "vue";
+
+const counter = ref(0);
+const modifyCounter = (value: number) => {
+  counter.value += value;
+};
 </script>
 
 <style>

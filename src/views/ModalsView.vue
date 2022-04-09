@@ -2,7 +2,7 @@
   <div class="modals">
     <h1>Modals</h1>
     <button @click="showModal = true">Show modal</button>
-    <Modal v-if="showModal" title="My Title as a Prop" @show-modal="showModal = $event">
+    <Modal v-model="showModal" title="My Title as a Prop">
       <template #title>My Shiny New Modal</template>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus animi, vero

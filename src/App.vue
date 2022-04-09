@@ -1,4 +1,6 @@
 <template>
+  <div class="user-data">{{ userData.name }} (@{{ userData.username }})</div>
+
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
@@ -7,6 +9,19 @@
 
   <RouterView />
 </template>
+
+<script setup lang="ts">
+import { reactive, provide } from "vue";
+import type { UserData } from "@/types/IUserData";
+import { UserDataKey } from "@/symbols/userData";
+
+const userData: UserData = reactive({
+  name: "Slim Shady",
+  username: "SlimShady",
+});
+
+provide(UserDataKey, userData);
+</script>
 
 <style>
 @import "@/assets/base.css";

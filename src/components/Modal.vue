@@ -1,8 +1,13 @@
 <template>
   <teleport to=".modals-container">
     <div v-if="modelValue" class="modal">
+      <div class="user-data">
+        Hi, my name is {{ userData?.name }} (@{{ userData?.username }})
+      </div>
+
       <h1><slot name="title" /></h1>
       <h2>{{ title }}</h2>
+
       <slot />
       <button @click="handleHideModal">Hide Modal</button>
     </div>
@@ -10,6 +15,9 @@
 </template>
 
 <script setup lang="ts">
+import { inject } from "vue";
+import { UserDataKey } from "@/symbols/userData";
+
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -17,14 +25,16 @@ const props = defineProps({
   },
   title: {
     type: String,
-    default: '',
+    default: "",
   },
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 const handleHideModal = () => {
-  emit('update:modelValue', false);
+  emit("update:modelValue", false);
 };
+
+const userData = inject(UserDataKey);
 </script>
 
 <style scoped>

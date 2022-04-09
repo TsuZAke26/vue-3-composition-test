@@ -3,8 +3,8 @@
     <h1>Posts</h1>
 
     <ul>
-      <li v-for="i in 3" :key="`id-${i}`">
-        <router-link :to="`/post/${i}`">Post {{ i }}</router-link>
+      <li v-for="post in posts" :key="`id-${post.id}`">
+        <router-link :to="`/post/${post.id}`">{{ post.title }}</router-link>
       </li>
     </ul>
 
@@ -13,7 +13,23 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { vAutofocus } from "@/directives/vAutofocus";
+
+const posts = ref([
+  {
+    id: 1,
+    title: "Post 1",
+  },
+  {
+    id: 2,
+    title: "Post 2",
+  },
+  {
+    id: 3,
+    title: "Post 3",
+  },
+]);
 </script>
 
 <style scoped>

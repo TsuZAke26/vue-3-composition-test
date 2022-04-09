@@ -10,53 +10,16 @@
 
     <div class="edit">
       <h4>Edit Counter Title:</h4>
-      <input type="text" v-model="counterData.title" />
+      <input v-model="counterData.title" type="text" v-autofocus />
     </div>
   </div>
 </template>
 
-<!-- Options API
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  data() {
-    return {
-      counter: 0,
-    };
-  },
-  methods: {
-    modifyCounter(value: number) {
-      this.counter += value;
-    },
-  },
-});
-</script>
--->
-
-<!-- Composition API (without script setup)
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-
-export default defineComponent({
-  setup() {
-    const counter = ref(0);
-    const modifyCounter = (value: number) => {
-      counter.value += value;
-    };
-
-    return {
-      counter,
-      modifyCounter,
-    };
-  },
-});
-</script>
--->
-
 <!-- Composition API (script setup) -->
 <script setup lang="ts">
 import { reactive } from "vue";
+
+import { vAutofocus } from "@/directives/vAutofocus";
 
 const counterData = reactive({
   count: 0,

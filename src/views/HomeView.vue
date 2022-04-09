@@ -1,9 +1,16 @@
 <template>
   <div class="home">
+    <div>My Counter: {{ counterData.title }}</div>
+
     <div>
       <button class="btn" @click="modifyCounter(-1)">-</button>
-      <span class="counter">{{ counter }}</span>
+      <span class="counter">{{ counterData.count }}</span>
       <button class="btn" @click="modifyCounter(1)">+</button>
+    </div>
+
+    <div class="edit">
+      <h4>Edit Counter Title:</h4>
+      <input type="text" v-model="counterData.title" />
     </div>
   </div>
 </template>
@@ -47,12 +54,16 @@ export default defineComponent({
 </script>
 -->
 
+<!-- Composition API (script setup) -->
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive } from "vue";
 
-const counter = ref(0);
+const counterData = reactive({
+  count: 0,
+  title: "",
+});
 const modifyCounter = (value: number) => {
-  counter.value += value;
+  counterData.count += value;
 };
 </script>
 
@@ -66,5 +77,9 @@ const modifyCounter = (value: number) => {
 .counter {
   font-size: 40px;
   margin: 10px;
+}
+
+.edit {
+  margin-top: 60px;
 }
 </style>
